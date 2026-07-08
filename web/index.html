@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">RA</span>
+      <span class="brand-name">Research Agent</span>
+    </div>
+    <div class="header-actions">
+      <span id="status-pill" class="status-pill status-neutral">Checking status&hellip;</span>
+      <button id="theme-toggle" class="icon-button" title="Toggle theme" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <button id="settings-button" class="icon-button" title="Settings" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1.04-1.56V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.6a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.56 1.04H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Ask a question about your documents</h1>
+    <p class="hero-sub">Answers are generated strictly from the documents you provide, with every claim traced back to its source.</p>
+
+    <div class="search-card">
+      <textarea id="question-input" class="search-input" placeholder="e.g. What are the major causes of employee attrition?" rows="1"></textarea>
+      <div class="search-actions">
+        <span class="search-hint"><kbd>Enter</kbd> to ask &middot; <kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line</span>
+        <div class="search-actions-buttons">
+          <button id="upload-trigger" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>
+            Add documents
+          </button>
+          <button id="ask-button" class="btn btn-primary">Get answer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <div class="layout-main">
+
+      <!-- Retrieval panel -->
+      <section id="retrieval-panel" class="panel hidden">
+        <div class="panel-header">
+          <h2>Retrieved passages</h2>
+          <span class="panel-sub" id="retrieval-count"></span>
+        </div>
+        <div id="retrieval-cards" class="stack"></div>
+      </section>
+
+      <!-- Answer -->
+      <section id="answer-panel" class="panel hidden">
+        <div id="status-banner-slot"></div>
+        <div class="panel-header">
+          <h2>Answer</h2>
+          <div class="panel-header-actions">
+            <span id="answer-source-tag" class="tag"></span>
+            <button id="copy-answer" class="btn btn-ghost btn-small">Copy</button>
+          </div>
+        </div>
+        <div id="answer-body" class="answer-body"></div>
+      </section>
+
+      <!-- Citations -->
+      <section id="citation-panel" class="panel hidden">
+        <div class="panel-header">
+          <h2>Citations</h2>
+          <span class="panel-sub" id="citation-count"></span>
+        </div>
+        <div id="citation-cards" class="stack"></div>
+      </section>
+
+    </div>
+
+    <aside class="layout-side">
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Source documents</h2>
+        </div>
+        <div id="dropzone" class="dropzone">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>
+          <p><strong>Drag and drop files</strong></p>
+          <p class="dropzone-sub">PDF, TXT, or Markdown &middot; or click to browse</p>
+          <input type="file" id="file-input" multiple accept=".pdf,.txt,.md" hidden />
+        </div>
+        <div id="document-list" class="doc-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header collapsible-header" data-target="tradeoffs-body">
+          <h2>Tradeoffs &amp; configuration</h2>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div id="tradeoffs-body" class="collapsible-body">
+          <dl id="config-list" class="config-list"></dl>
+          <p class="tradeoffs-note">
+            Reranking, hybrid retrieval, and multi-hop reasoning are noted as
+            future improvements in <code>tradeoffs.md</code>.
+          </p>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+</main>
+
+<!-- Settings modal -->
+<div id="settings-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Settings</h3>
+      <button id="close-settings" class="icon-button" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <label class="field-label" for="provider-select">LLM provider</label>
+      <select id="provider-select" class="select">
+        <option value="mock">Mock (no API key)</option>
+        <option value="anthropic">Anthropic</option>
+        <option value="openai">OpenAI</option>
+        <option value="groq">Groq</option>
+      </select>
+      <div id="modal-status" class="status-detail"></div>
+      <p class="field-hint">
+        Applies immediately for this server session. To persist a provider
+        across restarts, set <code>LLM_PROVIDER</code> in <code>.env</code> instead.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

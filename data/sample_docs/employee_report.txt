@@ -1,0 +1,11 @@
+Employee Attrition Report - Annual HR Findings
+
+Compensation remains one of the strongest predictors of voluntary turnover. Employees who feel underpaid relative to market rates are significantly more likely to leave within twelve months of a compensation review. Surveys across five companies found that pay dissatisfaction was cited by 41 percent of exiting employees as a primary reason for resignation.
+
+High workload and burnout also contribute significantly to attrition. Teams reporting sustained overtime of more than ten hours per week showed a 28 percent higher exit rate compared to teams with balanced workloads. Burnout was especially pronounced in customer-facing and engineering roles during periods of rapid company growth.
+
+Limited advancement opportunities are strongly associated with employee exits. Employees who did not receive a promotion or role change within three years were twice as likely to leave voluntarily compared to employees who had a clear growth path. Career stagnation was the second most commonly cited reason for departure in exit interviews.
+
+Poor manager relationships and lack of recognition were also frequently mentioned. Employees who rated their manager relationship poorly were three times more likely to leave within a year.
+
+Finally, misalignment between personal values and company culture contributed to attrition among newer hires, particularly those who joined during rapid scaling phases and felt the culture shifted after onboarding.

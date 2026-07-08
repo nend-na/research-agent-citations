@@ -1,0 +1,48 @@
+[
+  {
+    "question": "What factors contribute to employee attrition?",
+    "answer": "Employee Attrition Report - Annual HR Findings Compensation remains one of the strongest predictors of voluntary turnover. [Source 1]",
+    "provider_used": "mock",
+    "citations": [
+      {
+        "index": 1,
+        "filename": "employee_report.txt",
+        "chunk_id": 0,
+        "similarity": 0.2097,
+        "preview": "Employee Attrition Report - Annual HR Findings Compensation remains one of the strongest predictors of voluntary turnover. Employees who feel underpaid relative to market rates are significantly more likely to leave with..."
+      }
+    ]
+  },
+  {
+    "question": "How does remote work affect retention?",
+    "answer": "Remote Work and Employee Retention - Research Summary Flexible work arrangements have been consistently linked with increased retention across multiple industries. [Source 1]",
+    "provider_used": "mock",
+    "citations": [
+      {
+        "index": 1,
+        "filename": "remote_work_retention.txt",
+        "chunk_id": 0,
+        "similarity": 0.6414,
+        "preview": "Remote Work and Employee Retention - Research Summary Flexible work arrangements have been consistently linked with increased retention across multiple industries. A multi-year study of technology and professional servic..."
+      }
+    ]
+  },
+  {
+    "question": "What evidence exists for climate impacts on agriculture?",
+    "answer": "The supplied sources do not contain enough information to answer this question.",
+    "provider_used": "mock",
+    "citations": []
+  },
+  {
+    "question": "What challenges arise during AI adoption?",
+    "answer": "The supplied sources do not contain enough information to answer this question.",
+    "provider_used": "mock",
+    "citations": []
+  },
+  {
+    "question": "How does compensation compare to career growth as a driver of turnover?",
+    "answer": "The supplied sources do not contain enough information to answer this question.",
+    "provider_used": "mock",
+    "citations": []
+  }
+]
