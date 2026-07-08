@@ -256,9 +256,7 @@ See `tradeoffs.md` for:
 
 # Screenshots
 
-Add screenshots to the `screenshots/` directory after running the application.
-
-Suggested screenshots:
+ screenshots:
 
 - Home screen
 - Document upload
